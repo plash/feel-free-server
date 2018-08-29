@@ -1,0 +1,30 @@
+type User {
+  id: ID! @unique
+  username: String!
+  name: String!
+  email: String! @unique
+  password: String!
+  createdAt: DateTime!
+  authLogs: [AuthLog!]!
+  posts: [Post!]! @relation(name: "PostsByUser", onDelete: CASCADE)
+}
+
+type AuthLogInputData {
+  email: String!
+  password: String!
+}
+
+type AuthLog {
+  id: ID! @unique
+  data: AuthLogInputData!
+  isSuccessful: Boolean! @default(value: "false")
+  loggedBy: User
+  createdAt: DateTime!
+}
+
+type Post {
+  id: ID! @unique
+  data: String!
+  postedBy: User! @relation(name: "PostsByUser")
+  createdAt: DateTime!
+}
