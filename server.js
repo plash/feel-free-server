@@ -16,7 +16,7 @@ const resolvers = {
 
 const prisma = new Prisma({
   typeDefs: "config/generated/prisma.graphql",
-  endpoint: "https://eu1.prisma.sh/plashjindal99-9f715d/feel-free/dev",
+  endpoint: "__YOUR_PRISMA_ENDPOINT",
   secret: "secret",
   debug: true
 });
